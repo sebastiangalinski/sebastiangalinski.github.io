@@ -7,6 +7,18 @@ export const projects = [
     links: []
   },
   {
+    id: "drivr",
+    title: "driVR",
+    description: "TBA",
+    links: []
+  },
+  {
+    id: "movement-smoothing-tank-simulation",
+    title: "Investigating the Impact of Movement Smoothing Techniques on Game Feel in a Unity-Based Tank Simulation",
+    description: "TBA",
+    links: []
+  },
+  {
     id: "caustics",
     title: "Caustics Simulation in Blender",
     description:

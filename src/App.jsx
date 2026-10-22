@@ -4,6 +4,7 @@ import { CausticsView } from "./view/causticsView.jsx";
 import { CountryguessrView } from "./view/countryguessrView.jsx";
 import { LifeMemoView } from "./view/LifeMemoView.js";
 import { NordicGambitView } from "./view/nordicGambitView.jsx";
+import { TbaProjectView } from "./view/TbaProjectView.jsx";
 import { WasteClassificationView } from "./view/wasteClassificationView.jsx";
 
 const viewTypes = {
@@ -11,7 +12,9 @@ const viewTypes = {
   countryguessr: CountryguessrView,
   "waste-classification": WasteClassificationView,
   "nordic-gambit": NordicGambitView,
-  "life-memo": LifeMemoView
+  "life-memo": LifeMemoView,
+  "drivr": TbaProjectView,
+  "movement-smoothing-tank-simulation": TbaProjectView
 };
 
 function ForestBackground() {

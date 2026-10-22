@@ -7,6 +7,7 @@ Each project has a dedicated React view component:
 - `wasteClassificationView.jsx`
 - `nordicGambitView.jsx`
 - `LifeMemoView.js`
+- `TbaProjectView.jsx`
 
 The project-specific components use `ProjectView`, which renders the shared
 card structure from model data. The Nordic Gambit component keeps the external
