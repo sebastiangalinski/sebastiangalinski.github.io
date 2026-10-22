@@ -1,88 +1,13 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sebastian Galinski | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Portfolio of Sebastian Galinski, a media technology engineering student.">
+  <title>Sebastian Galinski | Portfolio</title>
 </head>
-
 <body>
-
-<nav>
-  <a onclick="showTab('projects')">Projects</a>
-  <a onclick="showTab('about')">About Me</a>
-</nav>
-
-<header>
-  <h1>Sebastian Galinski</h1>
-  <p>Media Technology Engineering Student | Developer | Problem Solver</p>
-</header>
-
-<section id="projects" class="active">
-  <h2>Projects</h2>
-
-  <div class="project">
-    <h3>Caustics Simulation in Blender</h3>
-    <p>
-        A computer graphics project simulating caustics — the light patterns formed by reflection and refraction.
-        Developed in a team of two, with a focus on evaluating the accuracy and performance of the simulation model.
-    </p>
-    <a href="https://sebastiangalinski.github.io/DD1354-project/" target="_blank">Project Blog →</a><br>
-  </div>
-
-  <div class="project">
-    <h3>COUNTRYGUESSR: a Geography-based web game</h3>
-    <p>
-        An interactive browser-based game designed to test and improve users’ geographical knowledge.
-        Built in a team of three, with responsibility for maintaining a Model-View-Presenter (MVP) architecture and improving usability through features such as smarter sorting based on relevant letters.
-    </p>
-    <a href="https://gits-15.sys.kth.se/iprog-students/endler-maim-nfraheem-sebgal-HT25-Project" target="_blank">View Repository →</a>
-  </div>
-
-  <div class="project">
-    <h3>Real Waste Classification</h3>
-    <p>
-        A machine learning project focused on classifying real-world waste data into different categories.
-        Developed in a team of four, with a focus on building and evaluating a Random Forest classifier, including performance analysis and model validation.
-    </p>
-    <a href="https://github.com/mehmetkucukler/ml-projekt-24" target="_blank">View Repository →</a>
-  </div>
-
-  <div class="project">
-    <h3>The Nordic Gambit: An Interactive Documentary</h3>
-    <p>
-      As part of a 7 person team, we created an interactive documentary about Sweden during WW2, exploring some "what if" scenarios. 
-      As the interaction designer, I connected the different narrative paths and ensured a coherent storyline throughout the experience.
-    </p>
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe
-        src="https://player.stornaway.io/embed/be9415bf"
-        frameborder="0"
-        allowfullscreen
-        allow="accelerometer; gyroscope; autoplay; xr-spatial-tracking;"
-        style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></iframe>
-      <script src="https://studio.stornaway.io/embed/v1/player.js" defer></script>
-    </div>
-  </div>
-
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I'm a student interested in machine learning, computer graphics, and interactive systems.
-  </p>
-
-  <p>
-    <a href="https://www.linkedin.com/in/sebastian-galinski" target="_blank">My Linkedin Profile</a>
-  </p>
-</section>
-
-<footer>
-  <p>© 2026 Sebastian Galinski</p>
-</footer>
-
-<script src="js/script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
