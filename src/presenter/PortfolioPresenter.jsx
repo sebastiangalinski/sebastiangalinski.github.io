@@ -71,7 +71,7 @@ function ProjectsPanel() {
         onSelectProject={selectProject}
       />
       <div className="projects-content">
-        <h2 id="projects-heading">Selected projects</h2>
+        <h2 id="projects-heading">Project Archive</h2>
         <div className="project-list">
           {sortedProjects.map((project) => {
             const View = viewTypes[project.id];
