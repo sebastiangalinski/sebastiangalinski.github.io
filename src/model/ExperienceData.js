@@ -83,6 +83,35 @@ export const experiences = [
     endDate: "2027-06",
     description: "Responsible for logistical planning and coordination of business-related events, ensuring that practical arrangements, resources and schedules are properly organized."
   },
+  {
+    id: "medias-career-fair-host-2024",
+    type: "Chapter Involvement",
+    title: "Corporate Host",
+    organization: "Media's Career Fair",
+    startDate: "2024-03",
+    endDate: "2024-03",
+    description: "Represented a company and welcomed students during Media's Career Fair."
+  },
+  {
+    id: "medias-career-fair-host-2026",
+    type: "Chapter Involvement",
+    title: "Corporate Host",
+    organization: "Media's Career Fair",
+    startDate: "2026-02",
+    endDate: "2026-02",
+    description: "Represented a company and welcomed students during Media's Career Fair."
+  },
+
+  // TEACHING ASSISTANCE
+  {
+    id: "multimedia-systems-signals-assistant",
+    type: "Teaching Assistance",
+    title: "Lab assistant",
+    organization: "KTH",
+    startDate: "2025-08",
+    endDate: "2025-09",
+    description: "Lab assistant in Multimedia Systems and Signals. Supported over 70 students in laboratory sessions in introductory signal processing, strengthening their understanding of core concepts and reducing common errors in assignments."
+  },
 
   // STUDENT RECEPTION
   {
@@ -90,8 +119,8 @@ export const experiences = [
     type: "Student Reception",
     title: "Reception Buddy for the Technical Preparatory Year",
     organization: "THS",
-    startDate: "2024-03",
-    endDate: "2024-09",
+    startDate: "2024-04",
+    endDate: "2024-08",
     description: "Introduced newly admitted students to KTH and student life through reception activities. Helped organize social events and supported new students in settling into university life."
   },
   {

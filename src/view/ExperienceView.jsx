@@ -12,7 +12,9 @@ function monthIndex(date) {
 export function ExperienceView({
   firstMonth,
   months,
-  years,
+  availableYears,
+  activeYear,
+  onSelectYear,
   timelineExperiences,
   laneCount,
   activeExperienceId,
@@ -23,20 +25,20 @@ export function ExperienceView({
   return (
     <section className="experience-section" aria-labelledby="experience-heading">
       <h2 id="experience-heading">Experience</h2>
+      <div className="experience-year-selector" aria-label="Experience years">
+        {availableYears.map((year) => (
+          <button
+            className={`experience-year-button ${activeYear === year ? "active" : ""}`}
+            key={year}
+            type="button"
+            aria-pressed={activeYear === year}
+            onClick={() => onSelectYear(year)}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
       <div className="experience-timeline" style={{ "--timeline-months": months.length, "--timeline-lanes": laneCount }}>
-        <div className="experience-years" aria-hidden="true">
-          {years.map((yearGroup) => (
-            <span
-              key={yearGroup.year}
-              style={{
-                "--year-start": yearGroup.start,
-                "--year-span": yearGroup.monthCount
-              }}
-            >
-              {yearGroup.year}
-            </span>
-          ))}
-        </div>
         <div className="experience-axis" aria-hidden="true">
           {months.map((month) => {
             const date = new Date(Math.floor(month / 12), month % 12);

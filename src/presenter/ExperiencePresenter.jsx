@@ -34,45 +34,56 @@ function assignLanes(items) {
     });
 }
 
-function prepareExperienceTimeline() {
+function prepareExperienceTimeline(selectedYear) {
   const timelineData = experiences.map((experience) => ({
     ...experience,
     effectiveEndDate: getEffectiveEndDate(experience.endDate)
   }));
-  const firstMonth = Math.min(...timelineData.map((experience) => monthIndex(experience.startDate)));
-  const lastMonth = Math.max(...timelineData.map((experience) => monthIndex(experience.effectiveEndDate)));
-  const months = Array.from({ length: lastMonth - firstMonth + 1 }, (_, index) => firstMonth + index);
-  const years = months.reduce((yearGroups, month, index) => {
-    const year = Math.floor(month / 12);
-    const existingYear = yearGroups.find((group) => group.year === year);
-
-    if (existingYear) {
-      existingYear.monthCount += 1;
-    } else {
-      yearGroups.push({ year, start: index + 1, monthCount: 1 });
-    }
-
-    return yearGroups;
-  }, []);
-
-  const timelineExperiences = assignLanes(timelineData);
+  const availableYears = [...new Set(
+    timelineData.flatMap((experience) => {
+      const startYear = Number(experience.startDate.slice(0, 4));
+      const endYear = Number(experience.effectiveEndDate.slice(0, 4));
+      return Array.from({ length: endYear - startYear + 1 }, (_, index) => startYear + index);
+    })
+  )].sort((first, second) => second - first);
+  const firstMonth = selectedYear * 12;
+  const months = Array.from({ length: 12 }, (_, index) => firstMonth + index);
+  const yearStart = `${selectedYear}-01`;
+  const yearEnd = `${selectedYear}-12`;
+  const yearExperiences = timelineData
+    .filter((experience) => experience.startDate <= yearEnd && experience.effectiveEndDate >= yearStart)
+    .map((experience) => ({
+      ...experience,
+      startDate: experience.startDate < yearStart ? yearStart : experience.startDate,
+      effectiveEndDate: experience.effectiveEndDate > yearEnd ? yearEnd : experience.effectiveEndDate
+    }));
+  const timelineExperiences = assignLanes(yearExperiences);
   const laneCount = Math.max(...timelineExperiences.map((experience) => experience.lane)) + 1;
 
-  return { firstMonth, months, years, timelineExperiences, laneCount };
+  return { firstMonth, months, availableYears, timelineExperiences, laneCount };
 }
 
 export function ExperiencePresenter() {
   const [activeExperienceId, setActiveExperienceId] = useState(null);
-  const timeline = prepareExperienceTimeline();
+  const availableYears = prepareExperienceTimeline(
+    Math.max(...experiences.map((experience) => Number(experience.endDate.slice(0, 4))))
+  ).availableYears;
+  const [activeYear, setActiveYear] = useState(availableYears[0]);
+  const timeline = prepareExperienceTimeline(activeYear);
   const selectExperience = (experienceId) => {
     setActiveExperienceId((currentId) =>
       currentId === experienceId ? null : experienceId
     );
   };
+  const selectYear = (year) => {
+    setActiveYear(year);
+  };
 
   return (
     <ExperienceView
       {...timeline}
+      activeYear={activeYear}
+      onSelectYear={selectYear}
       activeExperienceId={activeExperienceId}
       onSelectExperience={selectExperience}
       monthFormatter={monthFormatter}
