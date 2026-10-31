@@ -14,7 +14,7 @@ const viewTypes = {
   "nordic-gambit": NordicGambitView,
   "life-memo": LifeMemoView,
   "drivr": TbaProjectView,
-  "movement-smoothing-tank-simulation": TbaProjectView
+  "interpolation-perception-investigation": TbaProjectView
 };
 
 function ForestBackground() {

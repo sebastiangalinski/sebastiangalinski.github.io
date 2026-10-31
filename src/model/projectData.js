@@ -9,20 +9,32 @@ export const projects = [
   {
     id: "drivr",
     title: "driVR",
-    description: "TBA",
-    links: []
+    description:
+      "A VR driving simulation developed in a group of five to investigate how Virtual Reality can complement traditional driving-theory education. The project compared user experiences in VR and traditional learning methods, with my contributions focused on developing driving scenarios and implementing features that enhanced the overall user experience.",
+    links: [
+      {
+        label: "View Repository",
+        href: "https://github.com/einhar1/driVR"
+      }
+    ]
   },
   {
-    id: "movement-smoothing-tank-simulation",
-    title: "Investigating the Impact of Movement Smoothing Techniques on Game Feel in a Unity-Based Tank Simulation",
-    description: "TBA",
-    links: []
+    id: "interpolation-perception-investigation",
+    title: "Interpolation Perception Investigation",
+    description:
+      "An investigation into how different movement-smoothing and interpolation techniques affect perceived responsiveness and game feel in a tank simulation.",
+    links: [
+      {
+        label: "View Repository",
+        href: "https://github.com/sebastiangalinski/DH2323-Interpolation"
+      }
+    ]
   },
   {
     id: "caustics",
     title: "Caustics Simulation in Blender",
     description:
-      "A computer graphics project simulating caustics — the light patterns formed by reflection and refraction. Developed in a team of two, with a focus on evaluating the accuracy and performance of the simulation model.",
+      "A computer graphics project simulating caustics - the light patterns formed by reflection and refraction. Developed in a team of two, with a focus on evaluating the accuracy and performance of the simulation model.",
     links: [
       {
         label: "Project Blog",
