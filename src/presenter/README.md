@@ -1,12 +1,14 @@
-# React Architecture
+# Presenter Layer
 
-The portfolio is now a React application built with Vite:
+The presenter layer coordinates model data and view components:
 
 - `src/model/projectData.js` owns the project data.
-- `src/view/` contains one React view component for each project. Shared card
-  markup lives in `ProjectView.jsx`, while project-specific behavior belongs to
-  each project's view.
-- `src/App.jsx` owns tab state and maps each model entry to its view component.
+- `sortProjectsByDate` provides the newest-first project ordering.
+- `src/presenter/PortfolioPresenter.jsx` owns tab state, project-to-view
+  communication, and timeline selection.
+- `src/view/TimelineView.jsx` renders the project timeline and sends user
+  selections back to the presenter.
+- `src/App.jsx` owns only the page shell and background presentation.
 - `src/main.jsx` mounts the React application.
 
 Run `npm install` once, then use `npm run dev` for local development or

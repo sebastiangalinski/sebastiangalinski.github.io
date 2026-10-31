@@ -115,10 +115,23 @@ h1 { margin: .25rem 0 .75rem; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 
 h2 { margin-top: 0; border-bottom: 1px solid var(--line); padding-bottom: .8rem; }
 h3 { margin-top: 0; color: var(--glow); }
 
-main { position: relative; max-width: 960px; margin: auto; padding: 0 1.25rem 4rem; }
+main { position: relative; max-width: 1180px; margin: auto; padding: 0 1.25rem 4rem; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; animation: fade-in .45s ease-out; }
 .project-list { display: grid; gap: 1.25rem; }
+.projects-panel { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+.projects-content { min-width: 0; }
+.timeline { position: sticky; top: 2rem; padding: .5rem 0; }
+.timeline-label { margin: 0 0 1rem; color: var(--leaf); font-size: .8rem; font-weight: bold; letter-spacing: .12em; text-transform: uppercase; }
+.timeline ol { position: relative; display: grid; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+.timeline ol::before { content: ""; position: absolute; top: .8rem; bottom: .8rem; left: 6px; width: 1px; background: var(--line); }
+.timeline-entry { position: relative; }
+.timeline-year { margin: 1rem 0 .25rem; color: var(--leaf); font-size: .8rem; font-weight: bold; letter-spacing: .08em; }
+.timeline-item { position: relative; display: grid; grid-template-columns: 13px 1fr; gap: .75rem; width: 100%; padding: .6rem 0; border: 0; color: var(--muted); background: transparent; text-align: left; cursor: pointer; }
+.timeline-marker { z-index: 1; align-self: start; width: 13px; height: 13px; margin-top: .25rem; border: 2px solid var(--muted); border-radius: 50%; background: var(--deep-forest); transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.timeline-text { display: grid; gap: .15rem; font-size: .9rem; line-height: 1.3; }
+.timeline-item:hover, .timeline-item.active { color: var(--glow); }
+.timeline-item:hover .timeline-marker, .timeline-item.active .timeline-marker { border-color: var(--leaf); background: var(--leaf); box-shadow: 0 0 0 4px rgba(116, 198, 157, .14); }
 
 .project {
   padding: 1.5rem;
@@ -172,4 +185,13 @@ footer { padding: 2rem 1.25rem; color: var(--muted); text-align: center; }
 @media (max-width: 560px) {
   .hero { min-height: 35vh; padding-top: 3rem; }
   .documentary-toolbar { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 760px) {
+  .projects-panel { grid-template-columns: 1fr; gap: 1rem; }
+  .timeline { position: relative; top: auto; padding-bottom: 0; }
+  .timeline ol { display: flex; overflow-x: auto; gap: .25rem; padding-bottom: .5rem; }
+  .timeline ol::before { display: none; }
+  .timeline-item { min-width: 150px; padding: .55rem; border: 1px solid var(--line); border-radius: 10px; }
+  .timeline-marker { display: none; }
 }

@@ -7,6 +7,8 @@ Each project has a dedicated React view component:
 - `wasteClassificationView.jsx`
 - `nordicGambitView.jsx`
 - `LifeMemoView.js`
+- `IntroView.jsx`
+- `TimelineView.jsx`
 - `TbaProjectView.jsx`
 
 The project-specific components use `ProjectView`, which renders the shared
