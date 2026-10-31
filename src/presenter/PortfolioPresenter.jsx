@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { projects, sortProjectsByDate } from "../model/projectData.js";
 import { CausticsView } from "../view/causticsView.jsx";
 import { CountryguessrView } from "../view/countryguessrView.jsx";
+import { ExperienceView } from "../view/ExperienceView.jsx";
 import { LifeMemoView } from "../view/LifeMemoView.js";
 import { NordicGambitView } from "../view/nordicGambitView.jsx";
 import { TimelineView } from "../view/TimelineView.jsx";
@@ -107,6 +108,7 @@ export function PortfolioPresenter() {
         <div className="nav-inner">
           {[
             ["projects", "Projects"],
+            ["experience", "Experience"],
             ["about", "About Me"]
           ].map(([tabId, label]) => (
             <button
@@ -122,7 +124,9 @@ export function PortfolioPresenter() {
         </div>
       </nav>
       <main>
-        {activeTab === "projects" ? <ProjectsPanel /> : <AboutPanel />}
+        {activeTab === "projects" && <ProjectsPanel />}
+        {activeTab === "experience" && <ExperienceView />}
+        {activeTab === "about" && <AboutPanel />}
       </main>
     </>
   );

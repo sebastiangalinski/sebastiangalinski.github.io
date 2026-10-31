@@ -11,5 +11,10 @@ The Model layer in this application is responsible for handling data structures 
 2. **Repositories**: Data access layers that handle CRUD operations for the entities.
 3. **Services**: Provide business operations that retrieve or manipulate data across one or more entities.
 
+## Key data
+
+- `projectData.js` contains portfolio projects.
+- `ExperienceData.js` contains education and professional experience entries.
+
 ## Usage
 The Model layer should be utilized by other layers of the application to perform operations related to data management and business processes. Each component within this layer should promote reusability and maintainability, following the principles of clean architecture.

@@ -120,6 +120,22 @@ main { position: relative; max-width: 1180px; margin: auto; padding: 0 1.25rem 4
 .tab-panel { display: none; }
 .tab-panel.active { display: block; animation: fade-in .45s ease-out; }
 .project-list { display: grid; gap: 1.25rem; }
+.experience-timeline { overflow-x: auto; padding: 1rem 0 .5rem; }
+.experience-years, .experience-axis, .experience-grid { display: grid; grid-template-columns: repeat(var(--timeline-months), minmax(72px, 1fr)); min-width: calc(var(--timeline-months) * 72px); }
+.experience-years { color: var(--leaf); font-size: .75rem; font-weight: bold; letter-spacing: .05em; text-align: center; }
+.experience-years span { grid-column: var(--year-start) / span var(--year-span); padding: .3rem .25rem .15rem; }
+.experience-axis { border-bottom: 1px solid var(--line); color: var(--muted); font-size: .7rem; letter-spacing: .05em; text-align: center; }
+.experience-axis span { padding: .3rem .25rem; }
+.experience-grid { position: relative; grid-template-rows: repeat(var(--timeline-lanes), minmax(76px, auto)); gap: .5rem 0; padding: .5rem 0; background-image: linear-gradient(to right, var(--line) 1px, transparent 1px); background-size: calc(100% / var(--timeline-months)) 100%; }
+.experience-item { grid-column: var(--experience-start) / span var(--experience-span); grid-row: var(--experience-lane); min-width: 0; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: var(--card); box-shadow: 0 8px 20px rgba(0, 0, 0, .12); backdrop-filter: blur(8px); text-align: left; cursor: pointer; }
+.experience-item:hover { border-color: rgba(116, 198, 157, .6); }
+.experience-item h3 { margin: 0; font-size: .95rem; }
+.experience-organization { display: block; margin-top: .2rem; color: var(--leaf); font-size: .8rem; font-weight: normal; }
+.experience-description-view { margin-top: 1.25rem; padding: 1.25rem 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: 0 12px 32px rgba(0, 0, 0, .12); }
+.experience-description-view h3 { margin-top: 0; }
+.experience-description-view p { margin-bottom: 0; color: var(--muted); }
+.experience-description-view .experience-period { color: var(--leaf); font-size: .85rem; }
+.experience-section > h2 { text-align: center; }
 .projects-panel { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2.5rem; align-items: start; }
 .projects-content { min-width: 0; }
 .timeline { position: sticky; top: 2rem; padding: .5rem 0; }

@@ -9,6 +9,8 @@ Each project has a dedicated React view component:
 - `LifeMemoView.js`
 - `IntroView.jsx`
 - `TimelineView.jsx`
+- `ExperienceView.jsx`
+- `ExperienceDescriptionView.jsx`
 - `TbaProjectView.jsx`
 
 The project-specific components use `ProjectView`, which renders the shared
