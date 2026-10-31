@@ -4,6 +4,10 @@ import { ExperienceDescriptionView } from "./ExperienceDescriptionView.jsx";
 
 const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
 
+function typeClassName(type) {
+  return `experience-type-${type.toLowerCase().replaceAll(" ", "-")}`;
+}
+
 function monthIndex(date) {
   const [year, month] = date.split("-").map(Number);
   return year * 12 + month - 1;
@@ -61,6 +65,11 @@ export function ExperienceView() {
   return (
     <section className="experience-section" aria-labelledby="experience-heading">
       <h2 id="experience-heading">Experience</h2>
+      <div className="experience-legend" aria-label="Experience types">
+        <span className="experience-legend-item experience-type-educational-representation">Educational Representation</span>
+        <span className="experience-legend-item experience-type-chapter-involvement">Chapter Involvement</span>
+        <span className="experience-legend-item experience-type-student-reception">Student Reception</span>
+      </div>
       <div className="experience-timeline" style={{ "--timeline-months": months.length, "--timeline-lanes": laneCount }}>
         <div className="experience-years" aria-hidden="true">
           {years.map((yearGroup) => (
@@ -88,7 +97,7 @@ export function ExperienceView() {
         <div className="experience-grid">
           {timelineExperiences.map((experience) => (
             <button
-              className="experience-item"
+              className={`experience-item ${typeClassName(experience.type)}`}
               key={experience.id}
               type="button"
               aria-expanded={activeExperienceId === experience.id}

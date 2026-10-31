@@ -1,3 +1,7 @@
+function typeClassName(type) {
+  return `experience-type-${type.toLowerCase().replaceAll(" ", "-")}`;
+}
+
 export function ExperienceDescriptionView({ experience }) {
   if (!experience) {
     return null;
@@ -8,8 +12,9 @@ export function ExperienceDescriptionView({ experience }) {
   const displayedEndDate = experience.endDate > currentMonth ? "Current" : experience.endDate;
 
   return (
-    <article className="experience-description-view" id={`experience-description-${experience.id}`}>
+    <article className={`experience-description-view ${typeClassName(experience.type)}`} id={`experience-description-${experience.id}`}>
       <h3>{experience.title}</h3>
+      <p className="experience-type">{experience.type}</p>
       <p className="experience-organization">{experience.organization}</p>
       <p className="experience-period">{experience.startDate} - {displayedEndDate}</p>
       <p>{experience.description}</p>
