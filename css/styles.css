@@ -119,14 +119,23 @@ h3 { margin-top: 0; color: var(--glow); }
 .project-title:hover { color: var(--leaf); text-decoration: underline; }
 
 main { position: relative; max-width: 1180px; margin: auto; padding: 0 1.25rem 4rem; }
+.tab-window, .experience-window { animation-duration: .35s; animation-timing-function: ease-out; }
+.slide-next { animation-name: slide-in-from-left; }
+.slide-previous { animation-name: slide-in-from-right; }
+@keyframes slide-in-from-right { from { opacity: 0; transform: translateX(2rem); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slide-in-from-left { from { opacity: 0; transform: translateX(-2rem); } to { opacity: 1; transform: translateX(0); } }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; animation: fade-in .45s ease-out; }
 .project-list { display: grid; gap: 1.25rem; }
 .experience-year-selector { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .5rem; }
 .experience-year-button { border: 1px solid var(--line); border-radius: 999px; padding: .35rem .8rem; color: var(--muted); background: transparent; cursor: pointer; }
 .experience-year-button:hover, .experience-year-button.active { border-color: var(--leaf); color: var(--glow); background: rgba(116, 198, 157, .14); }
-.experience-timeline { overflow-x: auto; padding: 1rem 0 .5rem; }
-.experience-axis, .experience-grid { display: grid; grid-template-columns: repeat(var(--timeline-months), minmax(72px, 1fr)); min-width: calc(var(--timeline-months) * 72px); }
+.experience-timeline { position: relative; overflow: hidden; padding: 1rem 0 .5rem; cursor: grab; user-select: none; }
+.experience-timeline:active { cursor: grabbing; }
+.experience-window-track { display: flex; width: calc(var(--timeline-years) * 100%); transition: transform .35s ease-out; }
+.experience-window { flex: 0 0 calc(100% / var(--timeline-years)); min-width: 0; }
+.experience-year-preview { position: absolute; top: .25rem; left: 50%; z-index: 1; transform: translateX(-50%); padding: .2rem .65rem; border: 1px solid var(--leaf); border-radius: 999px; color: var(--glow); background: var(--card); font-size: .8rem; font-weight: bold; pointer-events: none; }
+.experience-axis, .experience-grid { display: grid; grid-template-columns: repeat(var(--timeline-months), minmax(0, 1fr)); min-width: 100%; }
 .experience-axis { border-bottom: 1px solid var(--line); color: #dff3e2; font-size: .7rem; letter-spacing: .05em; text-align: center; }
 .experience-axis span { padding: .3rem .25rem; }
 .experience-grid { position: relative; grid-template-rows: repeat(var(--timeline-lanes), minmax(76px, auto)); gap: .5rem 0; padding: .5rem 0; background-image: linear-gradient(to right, var(--line) 1px, transparent 1px); background-size: calc(100% / var(--timeline-months)) 100%; }

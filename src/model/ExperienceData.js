@@ -90,7 +90,7 @@ export const experiences = [
     organization: "Media's Career Fair",
     startDate: "2024-03",
     endDate: "2024-03",
-    description: "Represented a company and welcomed students during Media's Career Fair."
+    description: "Welcomed and assisted company representatives attending Medias carrer fair, serving as a point of contact and helping ensure a smooth and professional experience."
   },
   {
     id: "medias-career-fair-host-2026",
@@ -99,7 +99,7 @@ export const experiences = [
     organization: "Media's Career Fair",
     startDate: "2026-02",
     endDate: "2026-02",
-    description: "Represented a company and welcomed students during Media's Career Fair."
+    description: "Welcomed and assisted company representatives attending Medias carrer fair, serving as a point of contact and helping ensure a smooth and professional experience."
   },
 
   // TEACHING ASSISTANCE

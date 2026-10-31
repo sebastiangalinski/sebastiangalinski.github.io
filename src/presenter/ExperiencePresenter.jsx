@@ -69,13 +69,18 @@ export function ExperiencePresenter() {
     Math.max(...experiences.map((experience) => Number(experience.endDate.slice(0, 4))))
   ).availableYears;
   const [activeYear, setActiveYear] = useState(availableYears[0]);
-  const timeline = prepareExperienceTimeline(activeYear);
+  const [yearDirection, setYearDirection] = useState("next");
+  const yearTimelines = Object.fromEntries(
+    availableYears.map((year) => [year, prepareExperienceTimeline(year)])
+  );
+  const timeline = yearTimelines[activeYear];
   const selectExperience = (experienceId) => {
     setActiveExperienceId((currentId) =>
       currentId === experienceId ? null : experienceId
     );
   };
   const selectYear = (year) => {
+    setYearDirection(year < activeYear ? "previous" : "next");
     setActiveYear(year);
   };
 
@@ -83,6 +88,8 @@ export function ExperiencePresenter() {
     <ExperienceView
       {...timeline}
       activeYear={activeYear}
+      yearDirection={yearDirection}
+      yearTimelines={yearTimelines}
       onSelectYear={selectYear}
       activeExperienceId={activeExperienceId}
       onSelectExperience={selectExperience}

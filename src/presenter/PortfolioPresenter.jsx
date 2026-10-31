@@ -5,6 +5,14 @@ import { ProjectPresenter } from "./ProjectPresenter.jsx";
 
 export function PortfolioPresenter() {
   const [activeTab, setActiveTab] = useState("projects");
+  const [tabDirection, setTabDirection] = useState("next");
+  const tabOrder = ["projects", "experience", "about"];
+  const selectTab = (tabId) => {
+    setTabDirection(
+      tabOrder.indexOf(tabId) < tabOrder.indexOf(activeTab) ? "previous" : "next"
+    );
+    setActiveTab(tabId);
+  };
 
   return (
     <>
@@ -20,14 +28,14 @@ export function PortfolioPresenter() {
               type="button"
               aria-selected={activeTab === tabId}
               key={tabId}
-              onClick={() => setActiveTab(tabId)}
+              onClick={() => selectTab(tabId)}
             >
               {label}
             </button>
           ))}
         </div>
       </nav>
-      <main>
+      <main className={`tab-window slide-${tabDirection}`} key={activeTab}>
         {activeTab === "projects" && <ProjectPresenter />}
         {activeTab === "experience" && <ExperiencePresenter />}
         {activeTab === "about" && <AboutMePresenter />}
