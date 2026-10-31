@@ -11,6 +11,7 @@ Each project has a dedicated React view component:
 - `TimelineView.jsx`
 - `ExperienceView.jsx`
 - `ExperienceDescriptionView.jsx`
+- `aboutMeView.jsx`
 - `TbaProjectView.jsx`
 
 The project-specific components use `ProjectView`, which renders the shared

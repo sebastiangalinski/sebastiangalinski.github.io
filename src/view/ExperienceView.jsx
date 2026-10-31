@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { experiences } from "../model/ExperienceData.js";
 import { ExperienceDescriptionView } from "./ExperienceDescriptionView.jsx";
-
-const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "short" });
 
 function typeClassName(type) {
   return `experience-type-${type.toLowerCase().replaceAll(" ", "-")}`;
@@ -13,63 +9,20 @@ function monthIndex(date) {
   return year * 12 + month - 1;
 }
 
-function currentMonthDate() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-}
-
-function getEffectiveEndDate(endDate) {
-  const currentDate = currentMonthDate();
-  return endDate > currentDate ? currentDate : endDate;
-}
-
-function assignLanes(items) {
-  const laneEndDates = [];
-
-  return [...items]
-    .sort((first, second) => monthIndex(first.startDate) - monthIndex(second.startDate))
-    .map((experience) => {
-      const lane = laneEndDates.findIndex(
-        (laneEndDate) => laneEndDate < monthIndex(experience.startDate)
-      );
-      const laneIndex = lane === -1 ? laneEndDates.length : lane;
-      laneEndDates[laneIndex] = monthIndex(experience.effectiveEndDate);
-      return { ...experience, lane: laneIndex };
-    });
-}
-
-export function ExperienceView() {
-  const [activeExperienceId, setActiveExperienceId] = useState(null);
-  const timelineData = experiences.map((experience) => ({
-    ...experience,
-    effectiveEndDate: getEffectiveEndDate(experience.endDate)
-  }));
-  const firstMonth = Math.min(...timelineData.map((experience) => monthIndex(experience.startDate)));
-  const lastMonth = Math.max(...timelineData.map((experience) => monthIndex(experience.effectiveEndDate)));
-  const months = Array.from({ length: lastMonth - firstMonth + 1 }, (_, index) => firstMonth + index);
-  const years = months.reduce((yearGroups, month, index) => {
-    const year = Math.floor(month / 12);
-    const existingYear = yearGroups.find((group) => group.year === year);
-
-    if (existingYear) {
-      existingYear.monthCount += 1;
-    } else {
-      yearGroups.push({ year, start: index + 1, monthCount: 1 });
-    }
-
-    return yearGroups;
-  }, []);
-  const timelineExperiences = assignLanes(timelineData);
-  const laneCount = Math.max(...timelineExperiences.map((experience) => experience.lane)) + 1;
-
+export function ExperienceView({
+  firstMonth,
+  months,
+  years,
+  timelineExperiences,
+  laneCount,
+  activeExperienceId,
+  onSelectExperience,
+  monthFormatter,
+  selectedExperience
+}) {
   return (
     <section className="experience-section" aria-labelledby="experience-heading">
       <h2 id="experience-heading">Experience</h2>
-      <div className="experience-legend" aria-label="Experience types">
-        <span className="experience-legend-item experience-type-educational-representation">Educational Representation</span>
-        <span className="experience-legend-item experience-type-chapter-involvement">Chapter Involvement</span>
-        <span className="experience-legend-item experience-type-student-reception">Student Reception</span>
-      </div>
       <div className="experience-timeline" style={{ "--timeline-months": months.length, "--timeline-lanes": laneCount }}>
         <div className="experience-years" aria-hidden="true">
           {years.map((yearGroup) => (
@@ -102,11 +55,7 @@ export function ExperienceView() {
               type="button"
               aria-expanded={activeExperienceId === experience.id}
               aria-controls={`experience-description-${experience.id}`}
-              onClick={() =>
-                setActiveExperienceId((currentId) =>
-                  currentId === experience.id ? null : experience.id
-                )
-              }
+              onClick={() => onSelectExperience(experience.id)}
               style={{
                 "--experience-start": monthIndex(experience.startDate) - firstMonth + 1,
                 "--experience-span": monthIndex(experience.effectiveEndDate) - monthIndex(experience.startDate) + 1,
@@ -119,9 +68,7 @@ export function ExperienceView() {
           ))}
         </div>
       </div>
-      <ExperienceDescriptionView
-        experience={experiences.find((experience) => experience.id === activeExperienceId)}
-      />
+      <ExperienceDescriptionView experience={selectedExperience} />
     </section>
   );
 }

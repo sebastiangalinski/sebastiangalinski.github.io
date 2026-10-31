@@ -1,7 +1,11 @@
 export function ProjectView({ project, children }) {
   return (
     <article className="project" id={`project-${project.id}`}>
-      <h3>{project.title}</h3>
+      <h3>
+        <a className="project-title" href={`#project-${project.id}`}>
+          {project.title}
+        </a>
+      </h3>
       <p>{project.description}</p>
       <div className="project-links">
         {project.links.map((link) => (
