@@ -19,6 +19,16 @@ export const projects = [
       {
         label: "View Repository",
         href: "https://github.com/einhar1/driVR"
+      },
+      {
+        label: "Project report",
+        disabled: true
+      },
+      {
+        label: "Demo",
+        href: "/videos/drivr-demo.mp4",
+        video: true,
+        videoTitle: "driVR demo"
       }
     ]
   },
@@ -47,6 +57,12 @@ export const projects = [
       {
         label: "Project Blog",
         href: "https://sebastiangalinski.github.io/DD1354-project/"
+      },
+      {
+        label: "Demo",
+        href: "/videos/caustics.mp4",
+        video: true,
+        videoTitle: "Caustics result"
       }
     ]
   },
@@ -86,7 +102,8 @@ export const projects = [
     description:
       'As part of a 7 person team, we created an interactive documentary about Sweden during WW2, exploring some "what if" scenarios. As the interaction designer, I connected the different narrative paths and ensured a coherent storyline throughout the experience.',
     links: [],
-    interactive: true
+    interactive: true,
+    interactiveLabel: "interactive documentary"
   }
 ];
 

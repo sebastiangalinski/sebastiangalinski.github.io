@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProjectView } from "./ProjectView.jsx";
+import { getToggleLabel, ProjectView } from "./ProjectView.jsx";
 
 export function NordicGambitView({ project }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ export function NordicGambitView({ project }) {
         aria-expanded={isOpen}
         onClick={() => setIsOpen((open) => !open)}
       >
-        {isOpen ? "Close documentary ▲" : "Open interactive documentary ▼"}
+        {getToggleLabel(isOpen, project.interactiveLabel)}
       </button>
       {isOpen && (
         <div className="documentary-frame">
