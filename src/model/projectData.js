@@ -67,6 +67,22 @@ export const projects = [
     ]
   },
   {
+    id: "asteroids",
+    year: 2025,
+    month: 3,
+    title: "Asteroids",
+    description:
+      "A game controlled by a physical box that lets you use any item in your possession to dodge objects on screen. Built with Arduino, processing, and a variety of sensors.",
+    links: [
+      {
+        label: "Demo",
+        href: "/videos/asteroids-demo.mp4",
+        video: true,
+        videoTitle: "Asteroids demo"
+      }
+    ]
+  },
+  {
     id: "countryguessr",
     year: 2025,
     month: 1,

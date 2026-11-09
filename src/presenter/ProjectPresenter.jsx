@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
 import { projects, sortProjectsByDate } from "../model/projectData.js";
-import { CausticsView } from "../view/causticsView.jsx";
-import { CountryguessrView } from "../view/countryguessrView.jsx";
 import { LifeMemoView } from "../view/LifeMemoView.js";
+import { ProjectView } from "../view/ProjectView.jsx";
 import { NordicGambitView } from "../view/nordicGambitView.jsx";
 import { TimelineView } from "../view/TimelineView.jsx";
-import { TbaProjectView } from "../view/TbaProjectView.jsx";
-import { WasteClassificationView } from "../view/wasteClassificationView.jsx";
 
 const viewTypes = {
-  caustics: CausticsView,
-  countryguessr: CountryguessrView,
-  "waste-classification": WasteClassificationView,
   "nordic-gambit": NordicGambitView,
-  "life-memo": LifeMemoView,
-  drivr: TbaProjectView,
-  "interpolation-perception-investigation": TbaProjectView
+  "life-memo": LifeMemoView
 };
 
 const sortedProjects = sortProjectsByDate(projects);
@@ -74,10 +66,7 @@ export function ProjectPresenter() {
         <h2 id="projects-heading">Project Archive</h2>
         <div className="project-list">
           {sortedProjects.map((project) => {
-            const View = viewTypes[project.id];
-            if (!View) {
-              throw new Error(`No React view registered for project "${project.id}"`);
-            }
+            const View = viewTypes[project.id] || ProjectView;
             return <View key={project.id} project={project} />;
           })}
         </div>
